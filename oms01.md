@@ -76,8 +76,8 @@
   Phone:13766660310
   ```
 
-- 实现静态方法 addPerson(char sex, String phoneNum)，要求：
-  - 输入参数为表示性别的字符 sex，和表示手机号的字符串 phoneNum
+- 实现静态方法 addPerson(String name, char sex, String phoneNum)，要求：
+  - 输入参数为表示用户名的字符串name，表示性别的字符 sex，和表示手机号的字符串 phoneNum
   - 检查参数是否合法。若非法，返回 null
   - 若合法，返回一个 Person 对象
 

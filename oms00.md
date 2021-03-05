@@ -12,11 +12,7 @@
 
 你的任务是编写一个Test类：
 
-- 程序开始运行时，在终端打印一行字符：
-
-```shell
------ Welcome to Our BUAA Order Management System! -----
-```
+- 程序开始运行，进入main方法
 
 - 当终端输入QUIT时，系统退出，并在终端打印一行字符：
 

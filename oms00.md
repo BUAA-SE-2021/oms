@@ -8,13 +8,13 @@
 
 ## 题目描述
 
-本次先实现java最基本的输入输出测试。
+本次先实现 Java 最基本的输入输出测试。
 
-你的任务是编写一个Test类：
+你的任务是编写一个 Test 类：
 
 - 程序开始运行，进入main方法
 
-- 当终端输入QUIT时，系统退出，并在终端打印一行字符：
+- 当终端输入 QUIT 时，系统退出，并在终端打印一行字符：
 
 ```shell
 ----- Good Bye! -----
@@ -24,14 +24,14 @@
 
 ## 参考实现
 
-- java打印字符串与其他语言有所区别，不是直接调用print函数，可以用如下语句：
+- Java 打印字符串与其他语言有所区别，不是直接调用 `print` 函数，可以用如下语句：
 
 ```java
 String str = "Hello world!"
 System.out.println(str);
 ```
 
-- java连续读取输入行的一种实现：
+- Java 连续读取输入行的一种实现：
 
 ```java
 Scanner in = new Scanner(System.in);

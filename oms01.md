@@ -14,7 +14,7 @@
 
 **手机号码的格式：**
 
-<div style="display: flex; flex-direction: row; text-align: center; font-family: 'Fira Code'">
+<div style="display: flex; flex-directin: row; text-align: center; font-family: 'Fira Code'">
     <div style="border: firebrick solid 1px; width: 30px; height: 25px; background: #ffe9e9">1</div>
     <div style="border: firebrick solid 1px; width: 30px; height: 25px; background: #ffe9e9">2</div>
     <div style="border: firebrick solid 1px; width: 30px; height: 25px; background: #ffe9e9">3</div>

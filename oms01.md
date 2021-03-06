@@ -14,19 +14,7 @@
 
 **手机号码的格式：**
 
-<div style="display: flex; flex-directin: row; text-align: center; font-family: 'Fira Code'">
-    <div style="border: firebrick solid 1px; width: 30px; height: 25px; background: #ffe9e9">1</div>
-    <div style="border: firebrick solid 1px; width: 30px; height: 25px; background: #ffe9e9">2</div>
-    <div style="border: firebrick solid 1px; width: 30px; height: 25px; background: #ffe9e9">3</div>
-    <div style="border: firebrick solid 1px; width: 30px; height: 25px; background: #cdf6e7">4</div>
-    <div style="border: firebrick solid 1px; width: 30px; height: 25px; background: #cdf6e7">5</div>
-    <div style="border: firebrick solid 1px; width: 30px; height: 25px; background: #cdf6e7">6</div>
-    <div style="border: firebrick solid 1px; width: 30px; height: 25px; background: #cdf6e7">7</div>
-    <div style="border: firebrick solid 1px; width: 30px; height: 25px; background: #dddff8">8</div>
-    <div style="border: firebrick solid 1px; width: 30px; height: 25px; background: #dddff8">9</div>
-    <div style="border: firebrick solid 1px; width: 30px; height: 25px; background: #dddff8">10</div>
-    <div style="border: firebrick solid 1px; width: 30px; height: 25px; background: #dddff8">11</div>
-</div>
+[![6u1PFs.png](https://s3.ax1x.com/2021/03/06/6u1PFs.png)](https://imgtu.com/i/6u1PFs)
 
 为了方便餐厅点餐系统的编写，对实际规定进行简化，即**合法的手机号码严格按照下面的规定给出**，如果不符合下面的规定，即认为该手机号码不合法。
 

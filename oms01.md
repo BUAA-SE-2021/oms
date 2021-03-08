@@ -99,7 +99,7 @@
   Sex illegal
   ```
 
-  - 手机号需满足指定格式，非法请输出
+  - 手机号需满足指定格式，非法（包括手机号尾号和sex不符的情况）请输出
 
   ```shell
   Phone number illegal

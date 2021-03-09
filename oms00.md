@@ -24,20 +24,28 @@
 
 ## 程序退出
 
-和C语言类似，整个程序的正常的退出码应该为0，而不应该为-1、1等。
+和 C 语言的`return 0`类似，Java 程序也有其退出码，在 oms 中，整个程序的正常的退出码应该为 0，而不应该为-1、1 等。
 
-下面给出Java中退出的一个例子：
+> 在测评机中，退出状态非 0 则会被认为是程序未正常结束，很容易导致你的作业被错判，因此请务必注意在循环等进行程序退出时，确保退出状态为 0
+
+下面给出 Java 中退出的一个例子：
+
 ```java
 class Example {
-    public static void main(String[] args) {
-        int x = 0;
-        while (x > 100) {
-            System.out.println("get 100");
-            System.exit(0);
-            x++;
-        }
-    }
+	public static void main(String[] args) {
+		int x = 0;
+
+		while (true) {
+			x++;
+			if (x > 100) {
+				System.out.println("get 100");
+				System.exit(0);
+			}
+		}
+	}
 }
+
+// 这只是退出程序的一种方法，当然，针对该例子，你也可以直接使用break，跳出while循环，直接到达整个程序的退出区域（默认退出状态为0）
 ```
 
 ## 参考实现

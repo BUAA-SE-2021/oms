@@ -22,6 +22,24 @@
 
 - 对于其他的输入，不做任何处理，等待下一行输入
 
+## 程序退出
+
+和C语言类似，整个程序的正常的退出码应该为0，而不应该为-1、1等。
+
+下面给出Java中退出的一个例子：
+```java
+class Example {
+    public static void main(String[] args) {
+        int x = 0;
+        while (x > 100) {
+            System.out.println("get 100");
+            System.exit(0);
+            x++;
+        }
+    }
+}
+```
+
 ## 参考实现
 
 - Java 打印字符串与其他语言有所区别，不是直接调用 `print` 函数，可以用如下语句：

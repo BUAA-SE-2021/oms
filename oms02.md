@@ -96,7 +96,7 @@
   | udd  | 菜品编号 |    -p    | 该菜品的价格 |          | 在参数（数量、格式）合法的前提下，修改指定菜品编号的价格，如果没有菜品存在，则输出`Dish does not exist`；如果输入修改后价格非法，输出`Change dish illegal`，成功后输出`Update dish's price success`。                                                                        |
   | nd   | 菜品编号 | 菜品名字 | 菜品价格     | 菜品总量 | 在参数（数量、格式）合法的前提下，添加⼀个菜品到对应类型的 Menu 中如果菜品已经存在,则输出`Dish exists`。如果不存在则判断数据是否合法，非法输出`New dish input illegal`，若均合法则添加至列表并输出`Add dish success`。                                                        |
   | pm   |   |   |  |   | 在参数（数量、格式）合法的前提下，打印当前菜单的所有菜品情况，具体的打印顺序参考Menu类的编写说明；注意，如果当前Menu没有菜品，打印`Empty Menu`。 |
-  |      |          |          |              |          | 若输入指令不存在，输出Command not exists`；若参数数量不正确，输出`Params' count illegal`；对于所有未提及的其他输入不合法的情况，输出`Input illegal`。                                                                                                                                |
+  |      |          |          |              |          | 若输入指令不存在，输出`Command not exists`；若参数数量不正确，输出`Params' count illegal`；对于所有未提及的其他输入不合法的情况，输出`Input illegal`。                                                                                                                              |
 
 ### 注意
 今后若无具体说明，则oms对每一条指令的合法性判断顺序应为：**指令（选项/参数0）名称在环境中存在与否 > 参数数量是否正确 > 参数合法性**；在本次的输出中，参数调用失败以及参数数量的错误输出如上表最后所示。

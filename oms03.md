@@ -62,7 +62,7 @@
     3. DID:O000000,DISH:Cola,PRICE:5.0,TOTAL:200
     n-next page,l-last page,f-first page,q-quit
 [-] n
-[+] This is the end page
+[+] This is the ending page
 [-] l
 [+] Page: 1
     1. DID:H000000,DISH:C1,PRICE:1.0,TOTAL:130
@@ -70,7 +70,7 @@
     3. DID:H000002,DISH:C3,PRICE:3.0,TOTAL:100
     n-next page,l-last page,f-first page,q-quit
 [-] l
-[+] This is the begin page
+[+] This is the beginning page
 [-] f
 [+] Page: 1
     1. DID:H000000,DISH:C1,PRICE:1.0,TOTAL:130

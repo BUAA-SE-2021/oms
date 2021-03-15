@@ -52,6 +52,30 @@
 | pd | -c | 以数量为顺序打印当前所有被点菜品信息，格式化信息输出如下面说明所示 |
 | pd | -t | 以类型名称为顺序打印当前所有被点菜品信息，格式化信息输出如下面说明所示 |
 
-- 仅打印被点的菜品，打印顺序按照
-
+- 仅打印被点的菜品，打印顺序由[参数1]指定
+  + -c 表示按照该菜品被点数量由多到少排序输出
+  + -t 表示按照该菜品类型的顺序（H>C>O，每一种类型内按照DID由小到大）排序输出
+- 输出样例（-c）
+  ```
+  # 假设当前的点餐菜品列表如下（非格式化表示）
+  ↓
+  DID:H000000,DISH:FanQieChaoDan,PRICE:5.0,TOTAL:30,ORDERD:10
+  DID:H000001,DISH:FoTiaoQiang,PRICE:200.0,TOTAL:15,ORDERD:1
+  DID:C000000,DISH:IceCream,PRICE:2.5,TOTAL:100,ORDER:50
+  ↓
+  输入指令：
+  [-] SUDO
+  [+] Enter sudo mode
+  [-] pd -c
+  [+] 1. DID:C000000,DISH:IceCream,PRICE:2.5,TOTAL:100,ORDER:50
+      2. DID:H000000,DISH:FanQieChaoDan,PRICE:5.0,TOTAL:30,ORDERD:10
+      3. DID:H000001,DISH:FoTiaoQiang,PRICE:200.0,TOTAL:15,ORDERD:1
+  [-] pd -t
+  [+] 1. DID:H000000,DISH:FanQieChaoDan,PRICE:5.0,TOTAL:30,ORDERD:10
+      2. DID:H000001,DISH:FoTiaoQiang,PRICE:200.0,TOTAL:15,ORDERD:1
+      3. DID:C000000,DISH:IceCream,PRICE:2.5,TOTAL:100,ORDER:50
+  ```
+  
 #### login级
+
+在完善超级用户的指令集后，我们需要

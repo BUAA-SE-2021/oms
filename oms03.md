@@ -35,6 +35,8 @@
 - 参数2：测试数据保证关键字不含有空白符号，查找时**模糊大小写（大小写无关）**
 - 参数3：n（int）表示输出的菜品列表属于当前的第n页的内容
 - 参数4：m（int）表示当前的分页操作是按照每页m个菜品划分的
+- 如果n的大小小于1，输出第一页的格式化信息，如果n的大小大于最后一页的页码，输出最后一页的信息
+  - 请保证n和m都为整数类型，如果不是则输出`Input illegal`
 - 不保证菜单中的菜品总种类数C可以被m整除，因此最后一页的菜品数lm ≤ m
 - 页码的计算从1开始
 
@@ -42,8 +44,8 @@
 
 | 内嵌指令 | 功能描述 |
 | :---: |  :---: |
-| n | 输出当前页的下一页的内容，如果当前页已经是最后一页，请输出`This is the ending page` |
-| l | 输出当前页的上一页的内容，如果当前页已经是第一页，请输出`This is the beginning page` |
+| n | 输出当前页的下一页的内容，如果当前页已经是最后一页，请输出`This is the first page` |
+| l | 输出当前页的上一页的内容，如果当前页已经是第一页，请输出`This is the last page` |
 | f | 转到第一页（首页）并打印其内容|
 | q | 退出内嵌指令环境，返回到上一层指令环境，同时打印退出提示`Exit page check mode`，该指令是**唯一**退出内嵌环境的指令，不可调用其他指令退出当前环境 |
 | | 如果当前菜单的内容为空，则直接输出`Menu is empty, exit page check mode`，并退出内嵌环境 |
@@ -62,7 +64,7 @@
     3. DID:O000000,DISH:Cola,PRICE:5.0,TOTAL:200
     n-next page,l-last page,f-first page,q-quit
 [-] n
-[+] This is the ending page
+[+] This is the last page
 [-] l
 [+] Page: 1
     1. DID:H000000,DISH:C1,PRICE:1.0,TOTAL:130
@@ -70,7 +72,7 @@
     3. DID:H000002,DISH:C3,PRICE:3.0,TOTAL:100
     n-next page,l-last page,f-first page,q-quit
 [-] l
-[+] This is the beginning page
+[+] This is the first page
 [-] f
 [+] Page: 1
     1. DID:H000000,DISH:C1,PRICE:1.0,TOTAL:130
@@ -97,8 +99,8 @@
 
 | 内嵌指令 | 功能描述 |
 | :---: |  :---: |
-| n | 输出当前页的下一页的内容，如果当前页已经是最后一页，请输出`This is the end page` |
-| l | 输出当前页的上一页的内容，如果当前页已经是第一页，请输出`This is the begin page` |
+| n | 输出当前页的下一页的内容，如果当前页已经是最后一页，请输出`This is the first page` |
+| l | 输出当前页的上一页的内容，如果当前页已经是第一页，请输出`This is the last page` |
 | f | 转到第一页（首页）并打印其内容|
 | q | 退出内嵌指令环境，返回到上一层指令环境，同时打印退出提示`Exit page check mode`，该指令是**唯一**退出内嵌环境的指令，不可调用其他指令退出当前环境 |
 | | 如果当前菜单的内容为空，则直接输出`Menu is empty, exit page check mode`，并退出内嵌环境 |

@@ -137,9 +137,9 @@
     2. DID:C000000,DISH:IceCream,PRICE:4.0,TOTAL:100
     3. DID:O000000,DISH:Cola,PRICE:5.0,TOTAL:200
 [-] dish
-[+] Input illegal
+[+] Command not exists
 [-] quit
-[+] Input illegal
+[+] Command not exists
 [-] QUIT
 [+] ----- Good Bye! -----
 ```

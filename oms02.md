@@ -96,7 +96,7 @@
   | udd  | 菜品编号 |    -n    | 名字         |          | 在参数（数量、格式）合法的前提下，修改指定菜品编号的名称，如果Did格式错误，输出`Did input illegal`；如果没有菜品存在，则输出`Dish does not exist`。注意，名称的合法情况仅包括`数字 + 英文字母大小写`（位置不作强制要求），其他情况均非法，输出`New name input illegal`；如果新名称与原名称重复，输出`New name repeated`；成功修改后输出`Update dish's name success`。                                                                        |
   | udd  | 菜品编号 |    -t    | 该菜品的总量 |          | 在参数（数量）合法的前提下，修改指定菜品编号的总量，如果Did格式错误，输出`Did input illegal`；如果没有菜品存在，则输出`Dish does not exist`；如果输入修改后总量非法（**合法情况仅为非负整数**），输出`Change dish's total illegal`；成功后输出`Update dish's total success`。                                                                        |
   | udd  | 菜品编号 |    -p    | 该菜品的价格 |          | 在参数（数量）合法的前提下，修改指定菜品编号的价格，如果Did格式错误，输出`Did input illegal`；如果没有菜品存在，则输出`Dish does not exist`；如果输入修改后价格非法（**合法情况仅为非负浮点数**），输出`Change dish's price illegal`；成功后输出`Update dish's price success`。                                                                        |
-  | nd   | 菜品编号 | 菜品名字 | 菜品价格 | 菜品总量 | 在参数（数量、格式）合法的前提下，添加⼀个菜品到对应类型的 Menu 中，如果Did格式错误，输出`Did input illegal`；如果菜品已经存在,则输出`Dish exists`。如果不存在则判断数据是否合法，非法输出`New dish's attributes input illegal`，若均合法则添加至列表并输出`Add dish success`。                                                        |
+  | nd   | 菜品编号 | 菜品名字 | 菜品价格 | 菜品总量 | 在参数（数量、格式）合法的前提下，添加⼀个菜品到对应类型的 Menu 中，如果Did格式错误，输出`Did input illegal`；如果菜品已经存在,则输出`Dish exists`。如果不存在则判断数据是否合法，非法输出`New dish's attributes input illegal`，若均合法则判断菜品名称是否重复，若重复则输出`Name repeated`；成功则添加至列表并输出`Add dish success`。                                                        |
   | pm   |   |   |  |   | 打印当前菜单的所有菜品情况，具体的打印顺序参考Menu类的编写说明；注意，如果当前Menu没有菜品，打印`Empty Menu`。 |
 
 说明一： 关于数字属性（例如菜品价格、总量）的格式错误和数据合法性，可以理解为

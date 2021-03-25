@@ -90,7 +90,7 @@
 
   | 选项 | [参数 1] | [参数 2] | [参数 3]     | [参数 4] | 功能描述                                                                                                                                                                        |
   | ---- | -------- | :------: | ------------ | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-  |      |          |          |              |          | 若输入指令不存在（选项名或者选项中的选择性参数不存在均认为指令不存在，例如 *gd -not* 不存在），输出`Command not exists`；若参数数量不正确，输出`Params' count illegal`；对于所有未提及的其他输入格式错误以及不合法的情况，输出`Input illegal`。                                                                                                                              |
+  |      |          |          |              |          | 若输入指令不存在（选项名或者选项中的选择性参数不存在均认为指令不存在，例如 *gd -not* 不存在），输出`Command not exist`；若参数数量不正确，输出`Params' count illegal`；对于所有未提及的其他输入格式错误以及不合法的情况，输出`Input illegal`。                                                                                                                              |
   | gd   | -id      | 菜品编号 |              |          | 在参数（数量、格式）合法的前提下，根据菜品编号查找菜品，如果Did格式错误，输出`Did input illegal`；如果菜品不存在，则输出`Dish does not exist`；如果存在，则调用该菜品的 toString 方法进行输出。                                                             |
   | gd   | -key     |  关键字  |              |          | 在参数（数量、格式）合法的前提下，根据菜品名字查找菜品（测试保证key合法），如果菜品不存在，则输出`Dish does not exist`；如果存在，则根据菜品类型热菜 H、凉菜 C 和其他 O 的顺序输出，并且这三个分类中的编号应按照从小到大的格式输出，编号从1开始，具体格式请看文末示例。 |
   | udd  | 菜品编号 |    -n    | 名字         |          | 在参数（数量、格式）合法的前提下，修改指定菜品编号的名称，如果Did格式错误，输出`Did input illegal`；如果没有菜品存在，则输出`Dish does not exist`。注意，名称的合法情况仅包括`数字 + 英文字母大小写`（位置不作强制要求），其他情况均非法，输出`New name input illegal`；如果新名称与原名称重复，输出`New name repeated`；成功修改后输出`Update dish's name success`。                                                                        |
@@ -153,7 +153,7 @@ if (ops[0] === new String("nd")) {
     print("Params' count illegal\n");
   }
 } else {
-  print("Command not exists\n");
+  print("Command not exist\n");
 }
 
 ```
@@ -194,9 +194,9 @@ if (ops[0] === new String("nd")) {
     2. DID:C000000,DISH:IceCream,PRICE:4.0,TOTAL:100
     3. DID:O000000,DISH:Cola,PRICE:5.0,TOTAL:200
 [-] dish
-[+] Command not exists
+[+] Command not exist
 [-] quit
-[+] Command not exists
+[+] Command not exist
 [-] QUIT
 [+] ----- Good Bye! -----
 ```

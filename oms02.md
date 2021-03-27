@@ -130,7 +130,7 @@ String[] / other vector<String> ops
 | // {当然为了防止ops访问越界，我们建议你确保ops.len合适后再进行下面的操作}
 ↓
 // 指令（选项/参数0）名称在环境中存在与否
-if (ops[0] === new String("np")) {
+if (ops[0] === new String("nd")) {
   // 参数数量是否正确
   if (ops.len == 4) {
     // 参数合法性

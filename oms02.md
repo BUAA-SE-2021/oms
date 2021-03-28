@@ -187,7 +187,7 @@ if (ops[0] === new String("nd")) {
 [+] 1. DID:H000000,DISH:FanQieChaoDan,PRICE:5.0,TOTAL:30
     2. DID:C000000,DISH:IceCream,PRICE:4.0,TOTAL:100
     3. DID:O000000,DISH:Cola,PRICE:5.0,TOTAL:200
-[-] udd H000000 -n XiHongShiChaoJiDan
+[-] udd -n H000000 XiHongShiChaoJiDan
 [+] Update dish's name success
 [-] pm
 [+] 1. DID:H000000,DISH:XiHongShiChaoJiDan,PRICE:5.0,TOTAL:30

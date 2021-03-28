@@ -93,9 +93,9 @@
   |      |          |          |              |          | 若输入指令不存在（选项名或者选项中的选择性参数不存在均认为指令不存在，例如 *gd -not* 不存在），输出`Command not exist`；若参数数量不正确，输出`Params' count illegal`；对于所有未提及的其他输入格式错误以及不合法的情况，输出`Input illegal`。                                                                                                                              |
   | gd   | -id      | 菜品编号 |              |          | 在参数（数量）合法的前提下，根据菜品编号查找菜品，如果Did格式错误，输出`Did input illegal`；如果菜品不存在，则输出`Dish does not exist`；如果存在，则调用该菜品的 toString 方法进行输出。                                                             |
   | gd   | -key     |  关键字  |              |          | 在参数（数量）合法的前提下，根据菜品名字查找菜品（测试保证key合法），如果菜品不存在，则输出`Dish does not exist`；如果存在，则根据菜品类型热菜 H、凉菜 C 和其他 O 的顺序输出，并且这三个分类中的编号应按照从小到大的格式输出，编号从1开始，具体格式请看文末示例。 |
-  | udd  | 菜品编号 |    -n    | 名字         |          | 在参数（数量）合法的前提下，修改指定菜品编号的名称，如果Did格式错误，输出`Did input illegal`；如果没有菜品存在，则输出`Dish does not exist`。注意，名称的合法情况仅包括`数字 + 英文字母大小写`（位置不作强制要求），其他情况均非法，输出`New name input illegal`；如果新名称与原名称/已存在菜名重复，输出`New name repeated`；成功修改后输出`Update dish's name success`。                                                                        |
-  | udd  | 菜品编号 |    -t    | 该菜品的总量 |          | 在参数（数量）合法的前提下，修改指定菜品编号的总量，如果Did格式错误，输出`Did input illegal`；如果没有菜品存在，则输出`Dish does not exist`；如果输入修改后总量非法（**合法情况仅为非负整数**），输出`Change dish's total illegal`；成功后输出`Update dish's total success`。                                                                        |
-  | udd  | 菜品编号 |    -p    | 该菜品的价格 |          | 在参数（数量）合法的前提下，修改指定菜品编号的价格，如果Did格式错误，输出`Did input illegal`；如果没有菜品存在，则输出`Dish does not exist`；如果输入修改后价格非法（**合法情况仅为非负浮点数**），输出`Change dish's price illegal`；成功后输出`Update dish's price success`。                                                                        |
+  | udd  | -n |    菜品编号    | 名字         |          | 在参数（数量）合法的前提下，修改指定菜品编号的名称，如果Did格式错误，输出`Did input illegal`；如果没有菜品存在，则输出`Dish does not exist`。注意，名称的合法情况仅包括`数字 + 英文字母大小写`（位置不作强制要求），其他情况均非法，输出`New name input illegal`；如果新名称与原名称/已存在菜名重复，输出`New name repeated`；成功修改后输出`Update dish's name success`。                                                                        |
+  | udd  | -t |    菜品编号    | 该菜品的总量 |          | 在参数（数量）合法的前提下，修改指定菜品编号的总量，如果Did格式错误，输出`Did input illegal`；如果没有菜品存在，则输出`Dish does not exist`；如果输入修改后总量非法（**合法情况仅为非负整数**），输出`Change dish's total illegal`；成功后输出`Update dish's total success`。                                                                        |
+  | udd  | -p |    菜品编号    | 该菜品的价格 |          | 在参数（数量）合法的前提下，修改指定菜品编号的价格，如果Did格式错误，输出`Did input illegal`；如果没有菜品存在，则输出`Dish does not exist`；如果输入修改后价格非法（**合法情况仅为非负浮点数**），输出`Change dish's price illegal`；成功后输出`Update dish's price success`。                                                                        |
   | nd   | 菜品编号 | 菜品名字 | 菜品价格 | 菜品总量 | 在参数（数量）合法的前提下，添加⼀个菜品到对应类型的 Menu 中，如果Did格式错误，输出`Did input illegal`；如果菜品已经存在,则输出`Dish exists`。如果不存在则判断数据是否合法，非法输出`New dish's attributes input illegal`，若均合法则判断菜品名称是否重复，若重复则输出`Name repeated`；成功则添加至列表并输出`Add dish success`。                                                        |
   | pm   |   |   |  |   | 打印当前菜单的所有菜品情况，具体的打印顺序参考Menu类的编写说明；注意，如果当前Menu没有菜品，打印`Empty Menu`。 |
 
@@ -105,8 +105,6 @@
 > 如果没有特殊的说明，在oms中格式错误和非法认为是一种情况，按指示输出
 
 说明二：`在参数（数量）合法的前提下` - 这句话是指已经完成了参数数量的合法检查，因此优先级更高的是指令名称存在与否、参数数量是否合法
-
-说明三：不考虑二级选项（例如`-n`、`-t`）错位问题，默认测试用例中如果调用了`-n`等，则一定是正确的格式
 
 ### 注意
 今后若无具体说明，则oms对每一条指令的合法性判断顺序应为：**指令（选项/参数0）名称在环境中存在与否 > 参数数量是否正确 > 具体说明的操作或输出**；在本次的输出中，参数调用失败以及参数数量的错误输出如上表最后所示。

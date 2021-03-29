@@ -179,7 +179,9 @@ if (ops[0] === new String("nd")) {
 ----------nd----------
 [-] nd H00000a
 [+] Params' count illegal
-[-] nd H00000a $$ 15.0 10
+[-] nd H00000a DishA 15.0 10
+[+] Did input illegal
+[-] nd H000099 $$ 15.0 10
 [+] New dish's attributes input illegal
 [-] nd H000099 Dish99 price 10
 [+] New dish's attributes input illegal

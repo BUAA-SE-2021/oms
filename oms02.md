@@ -92,8 +92,13 @@
   | ---- | -------- | :------: | ------------ | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
   |      |          |          |              |          | 若输入指令不存在（选项名或者选项中的选择性参数不存在均认为指令不存在，例如 *gd -not* 不存在），输出`Command not exist`；若参数数量不正确，输出`Params' count illegal`；对于所有未提及的其他输入格式错误以及不合法的情况，输出`Input illegal`。                                                                                                                              |
   | gd   | -id      | 菜品编号 |              |          | 在参数（数量）合法的前提下，根据菜品编号查找菜品，如果Did格式错误，输出`Did input illegal`；如果菜品不存在，则输出`Dish does not exist`；如果存在，则调用该菜品的 toString 方法进行输出。                                                             |
+<<<<<<< Updated upstream
   | gd   | -key     |  关键字  |              |          | 在参数（数量）合法的前提下，根据菜品名字查找菜品（测试保证key合法），如果菜品不存在，则输出`Dish does not exist`；如果存在，则根据菜品类型热菜 H、凉菜 C 和其他 O 的顺序输出，并且这三个分类中的编号应按照从小到大的格式输出，编号从1开始，具体格式请看文末示例。 |
   | udd  | -n |    菜品编号    | 名字         |          | 在参数（数量）合法的前提下，修改指定菜品编号的名称，如果Did格式错误，输出`Did input illegal`；如果没有菜品存在，则输出`Dish does not exist`。注意，名称的**合法情况仅包括`数字 + 英文字母大小写`（位置不作强制要求）**，其他情况均非法，输出`New name input illegal`；如果新名称与原名称/已存在菜名重复，输出`New name repeated`；成功修改后输出`Update dish's name success`。                                                                        |
+=======
+  | gd   | -key     |  关键字  |              |          | 在参数（数量）合法的前提下，根据菜品名字查找菜品（测试保证key合法），如果菜品不存在，则输出`Dish does not exist`；如果存在（DID冲突），则根据菜品类型热菜 H、凉菜 C 和其他 O 的顺序输出，并且这三个分类中的编号应按照从小到大的格式输出，编号从1开始，具体格式请看文末示例。 |
+  | udd  | -n |    菜品编号    | 名字         |          | 在参数（数量）合法的前提下，修改指定菜品编号的名称，如果Did格式错误，输出`Did input illegal`；如果没有菜品存在，则输出`Dish does not exist`。注意，名称的合法情况仅包括`数字 + 英文字母大小写`（位置不作强制要求），其他情况均非法，输出`New name input illegal`；如果新名称与原名称/已存在菜名重复，输出`New name repeated`；成功修改后输出`Update dish's name success`。                                                                        |
+>>>>>>> Stashed changes
   | udd  | -t |    菜品编号    | 该菜品的总量 |          | 在参数（数量）合法的前提下，修改指定菜品编号的总量，如果Did格式错误，输出`Did input illegal`；如果没有菜品存在，则输出`Dish does not exist`；如果输入修改后总量非法（**合法情况仅为非负整数**），输出`Change dish's total illegal`；成功后输出`Update dish's total success`。                                                                        |
   | udd  | -p |    菜品编号    | 该菜品的价格 |          | 在参数（数量）合法的前提下，修改指定菜品编号的价格，如果Did格式错误，输出`Did input illegal`；如果没有菜品存在，则输出`Dish does not exist`；如果输入修改后价格非法（**合法情况仅为非负浮点数**），输出`Change dish's price illegal`；成功后输出`Update dish's price success`。                                                                        |
   | nd   | 菜品编号 | 菜品名字 | 菜品价格 | 菜品总量 | 在参数（数量）合法的前提下，添加⼀个菜品到对应类型的 Menu 中，如果Did格式错误，输出`Did input illegal`；如果菜品已经存在,则输出`Dish exists`。如果不存在则判断数据是否合法，非法输出`New dish's attributes input illegal`，若均合法则判断菜品名称是否重复，若重复则输出`Name repeated`；成功则添加至列表并输出`Add dish success`。                                                        |
@@ -219,6 +224,7 @@ if (ops[0] === new String("nd")) {
 [+] 1. DID:H000000,DISH:FanQieChaoDan,PRICE:5.0,TOTAL:30
     2. DID:C000000,DISH:IceCream,PRICE:4.0,TOTAL:100
     3. DID:O000000,DISH:Cola,PRICE:5.0,TOTAL:200
+<<<<<<< Updated upstream
 
 ----------udd----------
 [-] udd -n H000000 @@
@@ -227,6 +233,8 @@ if (ops[0] === new String("nd")) {
 [+] New name repeated
 [-] udd -n H000000 Cola
 [+] New name repeated
+=======
+>>>>>>> Stashed changes
 [-] udd -n H000000 XiHongShiChaoJiDan
 [+] Update dish's name success
 [-] pm

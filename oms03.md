@@ -26,7 +26,7 @@
 
 | 选项 | [参数 1] | [参数 2] | [参数 3] | [参数 4] | 功能描述 |
 | :---: | :---: | :---: | :---: | :---: | :---: |
-| | | | | | 和oms02类似，若输入指令不存在，输出`Command not exit`；若参数数量不正确，输出`Params' count illegal`；对于所有未提及的其他输入不合法的情况，输出`Input illegal`。 |
+| | | | | | 和oms02类似，若输入指令不存在，输出`Command not exit`；若参数数量不正确，输出`Params' count illegal`；**对于所有未提及的其他输入不合法的情况，输出`Input illegal`**。 |
 | gd | -key | 关键字 | 第n页 | 每页m个记录 | 详见功能1描述（有内嵌指令，请仔细阅读） |
 | pm | 第n页 | 每页m个记录 |  |  | 详见功能2描述（有内嵌指令，请仔细阅读） |
 
@@ -58,6 +58,8 @@
 > n-next page,l-last page,f-first page,q-quit
 
 ```
+[-] gd -key C -1 -1
+[+] Input illegal
 [-] gd -key C 2 3
 [+] Page: 2
     1. DID:H000111,DISH:XiHongShiChaoJiDan,PRICE:5.0,TOTAL:30
@@ -119,6 +121,8 @@
     3. DID:H000002,DISH:H3,PRICE:1.0,TOTAL:10
     4. DID:H000003,DISH:D1,PRICE:1.0,TOTAL:10
     5. DID:C000002,DISH:C1,PRICE:1.0,TOTAL:10
+[-] pm -1 0
+[+] Input illegal
 [-] pm 2 3
 [+] Page: 2
     1. DID:H000003,DISH:D1,PRICE:1.0,TOTAL:10

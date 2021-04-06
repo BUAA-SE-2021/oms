@@ -27,6 +27,7 @@
 | 选项 | [参数 1] | [参数 2] | [参数 3] | [参数 4] | 功能描述 |
 | :---: | :---: | :---: | :---: | :---: | :---: |
 | | | | | | 和oms02类似，若输入指令不存在，输出`Command not exist`；若参数数量不正确，输出`Params' count illegal`；**对于所有未提及的其他输入不合法的情况，输出`Input illegal`**。 |
+| | | | | | 补充：和oms2相同，每一个指令的判断都是**指令（选项/参数0）名称在环境中存在与否 > 参数数量是否正确 > 具体说明的操作或输出**，注意具体说明的操作或输出是按照从左往右的顺序进行的 |
 | gd | -key | 关键字 | 第n页 | 每页m个记录 | 详见功能1描述（有内嵌指令，请仔细阅读） |
 | pm | 第n页 | 每页m个记录 |  |  | 详见功能2描述（有内嵌指令，请仔细阅读） |
 
@@ -59,7 +60,9 @@
 
 ```
 [-] gd -key C -1 -1
-[+] Input illegal
+[+] Page slice method's params input illegal
+[-] gd -key abcdefg 1 -1
+[+] Dish does not exist
 [-] gd -key C 2 3
 [+] Page: 2
     1. DID:H000111,DISH:XiHongShiChaoJiDan,PRICE:5.0,TOTAL:30
@@ -95,6 +98,8 @@
 新增的功能2沿用了oms02的`pm`指令，由于参数数量的区别，功能上与其并不冲突，因此你的oms03版本也应该支持上一个版本的pm测试（也即不要直接修改/删除上一个版本的pm）。新的功能2要实现**打印菜单的基础上**进行分页的操作：
 - 参数1：n（int）表示输出的菜品列表属于当前的第n页的内容
 - 参数2：m（int）表示当前的分页操作是按照每页m个菜品划分的
+- 如果n的大小小于1，输出第一页的格式化信息，如果n的大小大于最后一页的页码，输出最后一页的信息
+  - 请保证n为整数、m为正整数，如果不是则输出`Page slice method's params input illegal`
 - 不保证菜单中的菜品总种类数C可以被m整除，因此最后一页的菜品数lm ≤ m
 - 页码的计算从1开始
 
@@ -122,7 +127,7 @@
     4. DID:H000003,DISH:D1,PRICE:1.0,TOTAL:10
     5. DID:C000002,DISH:C1,PRICE:1.0,TOTAL:10
 [-] pm -1 0
-[+] Input illegal
+[+] Page slice method's params input illegal
 [-] pm 2 3
 [+] Page: 2
     1. DID:H000003,DISH:D1,PRICE:1.0,TOTAL:10

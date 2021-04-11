@@ -132,6 +132,7 @@
 > n-next page,l-last page,f-first page,q-quit
 
 ```
+[#] 此处已存在Dish实例，见下输出
 [-] pm
 [+] 1. DID:H000000,DISH:H1,PRICE:1.0,TOTAL:10
     2. DID:H000001,DISH:H2,PRICE:1.0,TOTAL:10

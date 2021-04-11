@@ -59,6 +59,18 @@
 > n-next page,l-last page,f-first page,q-quit
 
 ```
+[-] nd H000000 H1 5.0 200
+[+] Add dish success
+[-] nd H000001 H2 5.0 200
+[+] Add dish success
+[-] nd H000002 H3 5.0 200
+[+] Add dish success
+[-] nd H000111 XiHongShiChaoJiDan 5.0 30
+[+] Add dish success
+[-] nd C000000 IceCream 4.0 100
+[+] Add dish success
+[-] nd O000000 Cola 5.0 200
+[+] Add dish success
 [-] gd -key C -1 -1
 [+] Page slice method's params input illegal
 [-] gd -key abcdefg 1 -1

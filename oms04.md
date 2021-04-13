@@ -59,7 +59,8 @@ PID = 两位身份符号（Cu/Wa/Bo/Co） + 5位整数编号
 
 ### SUDO模式的引入
 
-为了引入权限模式，此次功能更新会引入SUDO指令，来模拟有权限的终端系统。在初始的情况下，输入指令`SUDO`进入超级用户模式（现实中只有经理等角色才可以使用，这里省略了权限的认证阶段），进入SUDO模式后，首先输出`Enter sudo mode`，接着输入sudo模式下的指令，如下所示：
+为了引入权限模式，此次功能更新会引入SUDO指令，来模拟有权限的终端系统。
+在初始的情况下，输入指令`SUDO`进入超级用户模式（现实中只有经理等角色才可以使用，这里省略了权限的认证阶段），进入SUDO模式后，首先输出`Enter sudo mode`，接着输入sudo模式下的指令，如下所示：
 
 基本格式：
 
@@ -79,7 +80,7 @@ PID = 两位身份符号（Cu/Wa/Bo/Co） + 5位整数编号
 | SQ | | | | | 退出超级用户状态，输出`Quit sudo mode`，返回初始环境 |
 
 #### 新增功能描述1
-本组新增功能的目的是实现超级用户向点餐系统中录入各类角色信息（顾客、服务员、厨师），在录入信息时，需要对各参数的合法性进行检查，同时保证主键的不重复性（目前可以认为姓名、手机号、PID均不可重复）。
+本组新增功能的目的是实现超级用户向点餐系统中录入各类角色信息（顾客、服务员、厨师），在录入信息时，需要对各参数的合法性进行检查，同时保证主键的不重复性（**目前可以认为姓名、手机号、PID均不可重复**）。
 
 | 指令名 | 成功输出 |
 | :---: | :---: |
@@ -91,25 +92,15 @@ PID = 两位身份符号（Cu/Wa/Bo/Co） + 5位整数编号
 
 | 指令名 | 错误情况 | 错误输出 |
 | :---: | :---: | :---: |
-| 错误指令 | | Call sudo method illegal |
-| sncu | 参数（数量）错误 | Arguments' count illegal |
-| sncu | 顾客输入性别错误（非M/F） | Sex illegal |
-| sncu | 顾客输入手机号格式错误 | Phone number illegal |
-| sncu | 顾客输入性别与手机号不匹配 | Phone number doesn't match sex |
+| 错误指令 | SUDO模式不存在该指令 | Call sudo method illegal |
+| sncu\snwa\snco | 参数（数量）错误 | Params' count illegal |
+| sncu\snwa\snco | 输入性别错误（非M/F） | Sex illegal |
+| sncu\snwa\snco | 输入手机号格式错误 | Phone number illegal |
+| sncu\snwa\snco | 输入性别与手机号不匹配 | Phone number doesn't match sex |
 | sncu | 新增顾客PID格式错误 | Customer PID illegal |
 | sncu | 新增顾客PID已存在 | Customer PID exists |
-||||
-| snwa | 参数（数量）错误 | Arguments illegal |
-| snwa | 服务员输入性别错误（非M/F） | Sex illegal |
-| snwa | 服务员输入手机号格式错误 | Phone number illegal |
-| snwa | 服务员输入性别与手机号不匹配 | Phone number doesn't match sex |
 | snwa | 新增服务员PID格式错误 | Waiter PID illegal |
 | snwa | 新增服务员PID已存在 | Waiter PID exists |
-||||
-| snco | 参数（数量）错误 | Arguments illegal |
-| snco | 厨师输入性别错误（非M/F） | Sex illegal |
-| snco | 厨师输入手机号格式错误 | Phone number illegal |
-| snco | 厨师输入性别与手机号不匹配 | Phone number doesn't match sex |
 | snco | 新增厨师PID格式错误 | Cook PID illegal |
 | snco | 新增厨师PID已存在 | Cook PID exists |
 
@@ -127,23 +118,19 @@ PID = 两位身份符号（Cu/Wa/Bo/Co） + 5位整数编号
 
 | 指令名 | 错误情况 | 错误输出 |
 | :---: | :---: | :---: |
-| 错误指令 | | Call sudo method illegal |
-| dcu | 参数（数量）错误 | Arguments illegal |
+| 错误指令 | SUDO模式不存在该指令 | Call sudo method illegal |
+| dcu\dwa\dco | 参数（数量）错误 | Params' count illegal |
 | dcu | 指定PID错误 | D-Customer PID illegal |
 | dcu | 指定PID不存在 | D-Customer PID doesn't exist |
-||||
-| dwa | 参数（数量）错误 | Arguments illegal |
 | dwa | 指定PID错误 | D-Waiter PID illegal |
 | dwa | 指定PID不存在 | D-Waiter PID doesn't exist |
-||||
-| dco | 参数（数量）错误 | Arguments illegal |
 | dco | 指定PID错误 | D-Cook PID illegal |
 | dco | 指定PID不存在 | D-Cook PID doesn't exist |
 
 #### 新增功能描述3
-为了方便超级用户查看当前系统的所有用户信息，新增指令pp用来输出系统角色信息列表（格式化）。输出的顺序依旧有两层优先级，首先按照Customer > Waiter > Cook排列，其次则是PID的排序，序号从1开始，注意后面有一个空格。
+为了方便超级用户查看当前系统的所有用户信息，新增指令pp用来输出系统角色信息列表（格式化）。输出的顺序依旧有两层优先级，首先按照`Customer > Waiter > Cook`排列，其次则是PID的排序（PID从小到大），**序号从1开始**。
 
-注意，如果当前角色列表为空，则输出`Empty person list`。
+注意，如果当前角色列表为空，则输出`Empty person list`，不退出SUDO模式，继续接收指令。
 
 输出的格式如下所示：
 ```
@@ -154,33 +141,33 @@ PID = 两位身份符号（Cu/Wa/Bo/Co） + 5位整数编号
 [-] sncu ZhangSan M 13766660310 Cu00000
 [+] Add new customer success
 [-] pp
-[+] 1. PID:Cu00000,Name:ZhangSan,Sex:M,Phone:13766660310,PWD:oms1921
+[+] 1.PID:Cu00000,Name:ZhangSan,Sex:M,Phone:13766660310,PWD:oms1921
 ```
 
 ### 角色部分基本方法的实现
 
 #### 登录 login
 
-有了账户以及用户密码，接下来就需要实现系统用户的登录功能。用户登录需要在初始环境下进行（非SUDO权限环境），同样也需要通过指令进行：
+有了账户以及用户密码，接下来就需要实现系统用户的登录功能。用户登录需要在初始环境下进行（**非SUDO权限环境**），同样也需要通过指令进行：
 
 ```
-选项 [参数1] [参数2]
+选项 [参数1] [参数2] [参数3]
 ```
 | 指令名 | [参数1] | [参数2] | [参数3] | 功能 |
 | :---: | :---: | :---: | :---: | :---: |
-| login | -i | 用户ID（PID） | 用户密码 | 通过ID登录，如果当前PersonList不含有该PID，则输出`Pid not exist`，登录成功则输出`Login success`，密码错误输出`Password not match` |
-| login | -n | 用户姓名 | 用户密码 | 通过姓名登录，如果当前PersonList不含有该姓名，则输出`Pname not exist`，登录成功则输出`Login success`，密码错误输出`Password not match` |
+| login | -i | 用户ID（PID） | 用户密码 | 通过ID登录，如果当前PersonList不含有该PID，则输出`Pid not exist`；PID格式错误，则输出`PID illegal`；登录成功则输出`Login success`，密码错误输出`Password not match` |
+| login | -n | 用户姓名 | 用户密码 | 通过姓名登录，如果输入的姓名格式非法（姓名仅可能由 26 个字母大小写和数字构成，不含空格)，则输出`Pname illegal`；若姓名合法，但当前PersonList不含有该姓名，则输出`Pname not exist`；登录成功则输出`Login success`，密码错误输出`Password not match` |
 | | | | | 和oms02类似，若输入指令不存在，输出`Command not exit`；若参数数量不正确，输出`Params' count illegal`；对于所有未提及的其他输入不合法的情况，输出`Input illegal`。  |
 
 #### 二级指令环境 - login状态
 在成功登录后，用户进入用户登录状态，同时可以使用二级指令，具体指令如下：
 ```
-选项 [参数1] [参数2] [参数3] [参数4]
+选项 [参数1] [参数2]
 ```
 
 | 指令名 | [参数1] | [参数2] | 功能 |
 | :---: | :---: | :---: | :---: |
-| chgpw | 新密码 | 确认新密码 | 绣个当前用户的密码，首先判断新密码是否合法，非法输出`New password illegal`，合法则与确认新密码进行比较，二者一致则修改密码，输出`Change password success`，否则输出`Not match` |
+| chgpw | 新密码 | 确认新密码 | 修改当前用户的密码，首先判断新密码是否合法，非法输出`New password illegal`，合法则与确认新密码进行比较，二者一致则修改密码，输出`Change password success`，否则输出`Not match` |
 | myinfo | | | 输出当前账号的格式化信息，格式示例 |
 | back | | | 退出登录状态，输出`Logout success` |
 | QUIT | | | 退出系统（同oms03的基本环境中的QUIT指令） |
@@ -188,24 +175,24 @@ PID = 两位身份符号（Cu/Wa/Bo/Co） + 5位整数编号
 当前账户格式化信息如下：
 ```
 [info]
-| name:		Tom
-| Sex:		M
-| Pho:		13766660310
-| PID:		Cu00000
-| Pwd:		oms1921plus
-| Type:		Customer
+| name:	Tom
+| Sex:	M
+| Pho:	13766660310
+| PID:	Cu00000
+| Pwd:	oms1921plus
+| Type:	Customer
 ```
 为了方便大家辨识，这里直接给出格式化信息代码，请大家自行适配：
 
 ```
 System.out.println(
         "[info]\n" +
-        "| name:\t\t" + name + "\n" +
-        "| Sex:\t\t" + sex + "\n" +
-        "| Pho:\t\t" + phone + "\n" +
-        "| PID:\t\t" + PID + "\n" +
-        "| Pwd:\t\t" + Pwd + "\n" +
-        "| Type:\t\t" + Type
+        "| name:\t" + name + "\n" +
+        "| Sex:\t" + sex + "\n" +
+        "| Pho:\t" + phone + "\n" +
+        "| PID:\t" + PID + "\n" +
+        "| Pwd:\t" + Pwd + "\n" +
+        "| Type:\t" + Type
 );
 ```
 

@@ -155,12 +155,12 @@ PID = 两位身份符号（Cu/Wa/Bo/Co） + 5位整数编号
 ```
 | 指令名 | [参数1] | [参数2] | [参数3] | 功能 |
 | :---: | :---: | :---: | :---: | :---: |
-| login | -i | 用户ID（PID） | 用户密码 | 通过ID登录，如果当前PersonList不含有该PID，则输出`Pid not exist`；PID格式错误，则输出`PID illegal`；登录成功则输出`Login success`，密码错误输出`Password not match` |
+| login | -i | 用户ID（PID） | 用户密码 | 通过ID登录，如果当前PID格式错误，则输出`PID illegal`；若PersonList不含有该PID，则输出`Pid not exist`；登录成功则输出`Login success`，密码错误输出`Password not match` |
 | login | -n | 用户姓名 | 用户密码 | 通过姓名登录，如果输入的姓名格式非法（姓名仅可能由 26 个字母大小写和数字构成，不含空格)，则输出`Pname illegal`；若姓名合法，但当前PersonList不含有该姓名，则输出`Pname not exist`；登录成功则输出`Login success`，密码错误输出`Password not match` |
 | | | | | 和oms02类似，若输入指令不存在，输出`Command not exist`；若参数数量不正确，输出`Params' count illegal`；对于所有未提及的其他输入不合法的情况，输出`Input illegal`。  |
 
 #### 二级指令环境 - login状态
-在成功登录后，用户进入用户登录状态，同时可以使用二级指令，具体指令如下：
+在成功登录后，用户进入用户登录状态，同时可以使用二级指令，具体指令如下：__
 ```
 选项 [参数1] [参数2]
 ```

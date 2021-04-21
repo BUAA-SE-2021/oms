@@ -105,6 +105,8 @@ PID = 两位身份符号（Cu/Wa/Bo/Co） + 5位整数编号
 | snco | 新增厨师PID格式错误 | Cook PID illegal |
 | snco | 新增厨师PID已存在 | Cook PID exists |
 
+> 不考虑SUDO情况下的指令参数中名称的错误或重复
+
 建议大家把重复的判断封装成一个方法，进行调用而不是简单的if-else的复制粘贴。
 
 #### 新增功能描述2

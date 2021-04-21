@@ -97,6 +97,7 @@ PID = 两位身份符号（Cu/Wa/Bo/Co） + 5位整数编号
 | sncu\snwa\snco | 输入性别错误（非M/F） | Sex illegal |
 | sncu\snwa\snco | 输入手机号格式错误 | Phone number illegal |
 | sncu\snwa\snco | 输入性别与手机号不匹配 | Phone number doesn't match sex |
+| sncu\snwa\snco | 输入手机号已存在 | Phone number exists |
 | sncu | 新增顾客PID格式错误 | Customer PID illegal |
 | sncu | 新增顾客PID已存在 | Customer PID exists |
 | snwa | 新增服务员PID格式错误 | Waiter PID illegal |

@@ -144,7 +144,7 @@ PID = 两位身份符号（Cu/Wa/Co） + 5位整数编号
 [-] sncu ZhangSan M 13766660310 Cu00000
 [+] Add new customer success
 [-] pp
-[+] 1.PID:Cu00000,Name:ZhangSan,Sex:M,Phone:13766660310,PWD:oms1921
+[+] 1.PID:Cu00000,Name:ZhangSan,Sex:M,Phone:13766660310,PWD:oms1921SE
 ```
 
 ### 角色部分基本方法的实现

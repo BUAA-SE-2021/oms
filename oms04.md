@@ -32,8 +32,8 @@ PID = 两位身份符号（Cu/Wa/Bo/Co） + 5位整数编号
 ### Customer
 `顾客 - 继承Person类`
 
-- 添加属性：isVIP（boolean类型），表示当前顾客是否为VIP用户
-- 添加属性：balance（double类型），表示当前该顾客账户的余额
+- 添加属性：isVIP（boolean类型），表示当前顾客是否为VIP用户`（default: false)`
+- 添加属性：balance（double类型），表示当前该顾客账户的余额`（**保留一位小数**）`
 - 添加属性：isDining（boolean类型），表示当前顾客是否在店用餐
 - 添加属性：当前点餐清单（列表）
 - 添加属性：当前未上菜清单（列表）
@@ -201,3 +201,59 @@ System.out.println(
 );
 ```
 ##### login子环境中的角色方法
+
+###### 顾客 Customer
+
+`充值`
+> 顾客为了方便在餐厅内用餐，所以会选择在账户内预存一些现金，转为余额并进行消费
+
+由于是在login的子环境中，因此充值时直接将余额加入到该用户的余额中
+
+| 指令名 | [参数1] | 功能 |
+| :---: | :---: | :---: |
+| recharge | 金额m | 增加用户的余额 |
+
+**说明：**
+
+- 金额m为无前缀正浮点数类型，且单笔交易范围为 `100.0 <= m < 1000.0` 如果输入不符合要求，输出`Recharge input illegal`
+- 增加余额成功后无输出，继续等待下一个指令的读取
+
+```text
+# 已进入用户Cu00000账户的login子环境
+
+[-] recharge 50.0
+[+] Recharge input illegal
+[-] recharge 1000.0
+[+] Recharge input illegal
+[-] Recharge 101
+[-] Recharge 999.9
+```
+
+`会员`
+> 由于餐厅对会员（VIP）有优惠，因此顾客可以申请成为VIP的资格
+
+由于是在login的子环境中，因此申请会员会对当前账户进行修改操作
+
+| 指令名 | 功能 |
+| :---: | :---: |
+| aplVIP | 用户申请成为VIP |
+
+**说明：**
+
+- 申请成为VIP是有要求的（得充钱），需要用户账户余额数` >= 200.0 `（当前状态）
+- 在余额满足的前提下，申请成功并输出`Apply VIP success`，同时用户账户属性`isVIP`赋值为`true`
+- 在余额不满足的前提下，申请失败并输出`Please recharge more`，同时用户账户属性`isVIP`赋值为`false`
+
+`oms5预告`：
+- *每一次结账时，都进行余额的判断，如果余额不足200.0，自动取消VIP身份，需要再次申请才可以成为VIP*
+- *成为VIP后，每一餐打八五折哦~*
+
+```text
+# 已进入用户Cu00000账户的login子环境，当前余额为0
+
+[-] aplVIP
+[+] Please recharge more
+[-] recharge 800.0
+[-] aplVIP
+[+} Apply VIP success
+```

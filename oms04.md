@@ -211,7 +211,8 @@ System.out.println(
 
 | 指令名 | [参数1] | 功能 |
 | :---: | :---: | :---: |
-| recharge | 金额m | 增加用户的余额 |
+| rc | 金额m | 增加用户的余额 |
+| gb | | 查看用户的余额，输出`"Balance: " + customer.balance` |
 
 **说明：**
 
@@ -221,12 +222,16 @@ System.out.println(
 ```text
 # 已进入用户Cu00000账户的login子环境
 
-[-] recharge 50.0
+[-] rc 50.0
 [+] Recharge input illegal
-[-] recharge 1000.0
+[-] rc 1000.0
 [+] Recharge input illegal
-[-] Recharge 101
-[-] Recharge 999.9
+[-] rc 101
+[-] gr
+[+] Balance: 101.0
+[-] rc 999.9
+[-] gr
+[+] Balance: 1100.9
 ```
 
 `会员`
@@ -236,7 +241,7 @@ System.out.println(
 
 | 指令名 | 功能 |
 | :---: | :---: |
-| aplVIP | 用户申请成为VIP |
+| aplVIP | 用户申请成为VIP |  
 
 **说明：**
 
@@ -253,7 +258,7 @@ System.out.println(
 
 [-] aplVIP
 [+] Please recharge more
-[-] recharge 800.0
+[-] rc 800.0
 [-] aplVIP
 [+} Apply VIP success
 ```

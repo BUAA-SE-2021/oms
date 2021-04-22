@@ -227,10 +227,10 @@ System.out.println(
 [-] rc 1000.0
 [+] Recharge input illegal
 [-] rc 101
-[-] gr
+[-] gb
 [+] Balance: 101.0
 [-] rc 999.9
-[-] gr
+[-] gb
 [+] Balance: 1100.9
 ```
 

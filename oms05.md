@@ -179,8 +179,6 @@ No other waiters take orders
 `confirm`
 
 > 确认菜单，交给服务员进行下一步的操作，此时**默认退出顾客的 login 环境**
->
-> </div>
 
 ---
 

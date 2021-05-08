@@ -340,7 +340,25 @@ Take order success
 | manageDish | 若当前服务员所服务的顾客清单为空，则输出`Can not manage empty dishList` |
 
 ```
-# 点餐Order输出示例[-] checkOrder[+] Customer has confirmedNo other waiters take orders1.DID:H000000,DISH:FanQieChaoDan,PRICE:5.0,NUM:1,SERVE:NO,SERVE_NUM:02.DID:H000001,DISH:ChaoTuDouSi,PRICE:16.0,NUM:1,SERVE:NO,SERVE_NUM:0# 顾客登出，服务员登录，接单输出示例[-] takeOrder[+] Take order success# manageDish输出示例[-] manageDish[+]1.PID:Cu00000,Name:zhangSan,Phone:13766660310,Dish:FanQieChaoDan,NUM:1,COOK:Li2.PID:Cu00000,Name:zhangSan,Phone:13766660310,Dish:ChaoTuDouSi,NUM:1,COOK:Zhang# 注意：输出顺序按照厨师名字的先后顺序进行输出
+# 点餐Order输出示例
+[-] checkOrder
+[+] 
+Customer has confirmedNo 
+other waiters take orders
+1.DID:H000000,DISH:FanQieChaoDan,PRICE:5.0,NUM:1,SERVE:NO,SERVE_NUM:0
+2.DID:H000001,DISH:ChaoTuDouSi,PRICE:16.0,NUM:1,SERVE:NO,SERVE_NUM:0
+
+# 顾客登出，服务员登录，接单输出示例
+[-] takeOrder
+[+] Take order success
+
+# manageDish输出示例
+[-] manageDish
+[+] 
+1.PID:Cu00000,Name:zhangSan,Phone:13766660310,Dish:FanQieChaoDan,NUM:1,COOK:Li
+2.PID:Cu00000,Name:zhangSan,Phone:13766660310,Dish:ChaoTuDouSi,NUM:1,COOK:Zhang
+
+# 注意：输出顺序按照厨师名字的先后顺序进行输出
 ```
 
 
@@ -383,6 +401,16 @@ Take order success
 | receiveMoney | PID顾客ID | 若顾客所点的菜还没有上完，则输出`The dish is not served yet` |
 
 ```
-# 点餐Order输出示例[-] checkOrder[+] Customer has confirmedNo other waiters take orders1.DID:H000000,DISH:FanQieChaoDan,PRICE:5.0,NUM:1,SERVE:YES,SERVE_NUM:12.DID:H000001,DISH:ChaoTuDouSi,PRICE:16.0,NUM:1,SERVE:YES,SERVE_NUM:1# 顾客登出，服务员登录，receiveMoney输出示例[-] receiveMoney[+] Total:21.0
+# 点餐Order输出示例
+[-] checkOrder
+[+] 
+Customer has confirmed
+No other waiters take orders
+1.DID:H000000,DISH:FanQieChaoDan,PRICE:5.0,NUM:1,SERVE:YES,SERVE_NUM:1
+2.DID:H000001,DISH:ChaoTuDouSi,PRICE:16.0,NUM:1,SERVE:YES,SERVE_NUM:1
+
+# 顾客登出，服务员登录，receiveMoney输出示例
+[-] receiveMoney
+[+] Total:21.0
 ```
 

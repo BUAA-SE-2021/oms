@@ -58,6 +58,7 @@ Order 的基本属性如下：
 - WaiterID `表明本次是由哪位服务员进行接单以及送餐服务的（类似海底捞）`
 - DishList `顾客所点菜品列表`
 - isConfirm `顾客是否确认菜单`
+- isDeliver `服务员是否已送单`
 
 **注意：**
 
@@ -69,20 +70,20 @@ Order 的基本属性如下：
 >
 > - 顾客在进行点餐前可以进行菜品和菜单的查询，因此继承了前些版本的查询功能
 
-| 指令名 | [参数 1/子指令名] | [参数 2] | [参数 3] | [参数 4] | 功能 |
-| :---: | :---: | :---: | :---: | :---: | :---: |
-| 错误输出 | | | | | 如果输入的指令名不属于该环境，输出`Command not exist`；若参数数量不正确，输出`Params' count illegal`；对于所有未提及的其他输入不合法的情况，输出`Input illegal` |
-| rc | 金额 m | | | | 同 oms4 |
-| gb | | | | | 同 oms4 |
-| aplVIP | | | | | 同 oms4 |
-| gd | -id | 菜品编号 | | | 同 oms2 |
-| gd | -key | 关键字 | | | 同 oms2 |
-| gd | -key | 关键字 | 第 n 页  | 每页 m 个记录 | 同 oms3 |
-| pm | | | | | 同 oms2 |
-| pm | 第 n 页 | 每页 m 个记录 | | | 同 oms3 |
-| **order** | | | | | 进入点餐环境，详情见下 |
-| **checkOrder** | | | | | 查看已点菜品，详情见下 |
-| **confirm** | | | | | 提交菜单，详情见下 |
+|     指令名     | [参数 1/子指令名] |   [参数 2]    | [参数 3] |   [参数 4]    |                             功能                             |
+| :------------: | :---------------: | :-----------: | :------: | :-----------: | :----------------------------------------------------------: |
+|    错误输出    |                   |               |          |               | 如果输入的指令名不属于该环境，输出`Command not exist`；若参数数量不正确，输出`Params' count illegal`；对于所有未提及的其他输入不合法的情况，输出`Input illegal` |
+|       rc       |      金额 m       |               |          |               |                           同 oms4                            |
+|       gb       |                   |               |          |               |                           同 oms4                            |
+|     aplVIP     |                   |               |          |               |                           同 oms4                            |
+|       gd       |        -id        |   菜品编号    |          |               |                           同 oms2                            |
+|       gd       |       -key        |    关键字     |          |               |                           同 oms2                            |
+|       gd       |       -key        |    关键字     | 第 n 页  | 每页 m 个记录 |                           同 oms3                            |
+|       pm       |                   |               |          |               |                           同 oms2                            |
+|       pm       |      第 n 页      | 每页 m 个记录 |          |               |                           同 oms3                            |
+|   **order**    |                   |               |          |               |                    进入点餐环境，详情见下                    |
+| **checkOrder** |                   |               |          |               |                    查看已点菜品，详情见下                    |
+|  **confirm**   |                   |               |          |               |                      提交菜单，详情见下                      |
 
 `order点餐环境`
 
@@ -90,12 +91,12 @@ Order 的基本属性如下：
 
 **在该环境中，循环读取指令，只接受 add 和 finish**
 
-| 指令名 | [参数 1/子指令名] | [参数 2] | [参数 3] | [参数 4] | 功能 |
-| :---: | :---: | :---: | :---: | :---: | :---: |
-| 错误输出 | | | | | 如果输入的指令名不属于该环境，输出`Command not exist`；若参数数量不正确，输出`Params' count illegal`；对于所有未提及的其他输入不合法的情况，输出`Input illegal`。|
-| add | -i | Dish 主键 DID | m（正整数且保证数据合法） | | 点餐，将选择的菜品（m 道）加入到对应的 Order 实例中，如果不存在这道菜，输出`Dish selected is not exist`；如果菜品售空，输出`Dish selected is sold out`；如果点餐数量超过菜品数量，输出`Dish is out of stock`，本次点餐无效 |
-| add | -n | Dish 名称 name（不考虑名称的重复和非法） | m（正整数且保证数据合法） | | 点餐，将选择的菜品（m 道）加入到对应的 Order 实例中，如果不存在这道菜，输出`Dish selected is not exist`；如果菜品售空，输出`Dish selected is sold out`；如果点餐数量超过菜品数量，输出`Dish is out of stock`，本次点餐无效 |
-| finish | | | | | 结束选菜，**检查此时 Order 的菜品数量**，如果菜品数量为 0，输出`Please select at least one dish to your order`，继续接收指令；否则退出到上一层环境中 |
+|  指令名  | [参数 1/子指令名] |                 [参数 2]                 |         [参数 3]          | [参数 4] |                             功能                             |
+| :------: | :---------------: | :--------------------------------------: | :-----------------------: | :------: | :----------------------------------------------------------: |
+| 错误输出 |                   |                                          |                           |          | 如果输入的指令名不属于该环境，输出`Command not exist`；若参数数量不正确，输出`Params' count illegal`；对于所有未提及的其他输入不合法的情况，输出`Input illegal`。 |
+|   add    |        -i         |              Dish 主键 DID               | m（正整数且保证数据合法） |          | 点餐，将选择的菜品（m 道）加入到对应的 Order 实例中，如果不存在这道菜，输出`Dish selected is not exist`；如果菜品售空，输出`Dish selected is sold out`；如果点餐数量超过菜品数量，输出`Dish is out of stock`，本次点餐无效 |
+|   add    |        -n         | Dish 名称 name（不考虑名称的重复和非法） | m（正整数且保证数据合法） |          | 点餐，将选择的菜品（m 道）加入到对应的 Order 实例中，如果不存在这道菜，输出`Dish selected is not exist`；如果菜品售空，输出`Dish selected is sold out`；如果点餐数量超过菜品数量，输出`Dish is out of stock`，本次点餐无效 |
+|  finish  |                   |                                          |                           |          | 结束选菜，**检查此时 Order 的菜品数量**，如果菜品数量为 0，输出`Please select at least one dish to your order`，继续接收指令；否则退出到上一层环境中 |
 
 ##### 注意
 
@@ -176,20 +177,21 @@ Order 的基本属性如下：
 [-] checkOrder
 [+]
 Customer doesn't confirm
-No other waiters take orders
-1.DID:H000000,DISH:FanQieChaoDan,PRICE:5.0,NUM:1
-2.DID:H000001,DISH:ChaoTuDouSi,PRICE:16.0,NUM:1
-3.DID:C000000,DISH:IceCream,PRICE:4.0,NUM:2
-4.DID:C000002,DISH:BoBoJi,PRICE:55.0,NUM:1
-5.DID:O000100,DISH:Cake,PRICE:74.0,NUM:3
+1.DID:H000000,DISH:FanQieChaoDan,PRICE:5.0,NUM:1,Deliver:NO
+2.DID:H000001,DISH:ChaoTuDouSi,PRICE:16.0,NUM:1,Deliver:NO
+3.DID:C000000,DISH:IceCream,PRICE:4.0,NUM:2,Deliver:NO
+4.DID:C000002,DISH:BoBoJi,PRICE:55.0,NUM:1,Deliver:NO
+5.DID:O000100,DISH:Cake,PRICE:74.0,NUM:3,Deliver:NO
 |
 SUM:158.0
+
+# Deliver表示厨房做完后，服务员是否已送单。NO为未送单，YES为已送单
 ```
 
 `confirm`
 
-| 指令名 | 情况 |
-| :---: | :---: |
+| 指令名  |                             情况                             |
+| :-----: | :----------------------------------------------------------: |
 | confirm | 如果当前菜单有效（该Customer有未confirm的菜单），输出`Order Confirmed`，并退出顾客的 login 环境；如果不存在有效菜单，输出`No order can be confirmed`，不退出顾客的 login 环境 |
 
 **方式**：当顾客confirm时，由系统自动分配当前菜单（Order），此时系统会检索所有的 Waiter 对象，按照该对象当前负责的 Order 数量（由小到大）以及 WID（由小到大）进行排序并选择第一个 Waiter 的
@@ -215,27 +217,31 @@ order指令 -> return Order实例
                    confirm指令: 参数(Order 实例） 
 ```
 
+
+
 #### Waiter
 
 > 在 oms4 中，服务员可以通过`login -i`和`login -n`两种方式进入 login 的环境，但是当前的环境中服务员功能需要进一步扩展，在保留 oms4 的服务员登录后的相关功能前提下，增加下列模块：
 
-| 指令名 | [参数 1/子指令名] | [参数 2] | [参数 3] | [参数 4] | 功能  |
-| :---: | :---: | :---: | :---: | :---: | :---: |
-| 错误输出 | | | | | 如果输入的指令名不属于该环境，输出`Command not exist`；若参数数量不正确，输出`Params' count illegal`；对于所有未提及的其他输入不合法的情况，输出`Input illegal` |
-| getOrderList | | | | | 获取当前所服务的 Order 清单，详情见下 |
-| manageOrder | | | | | 分配订单，详情见下 |
-| DeliverAndReceive | | | | | 送餐并且收钱，详情见下 |
-| rw | CID（顾客ID） | money （具体充入的金额） | | | 具体逻辑参见 oms4，注意：当这次充钱达到 VIP 标准后，总金额应该按照八折重新计算 |
+|      指令名       | [参数 1/子指令名] |       [参数 2]       | [参数 3] | [参数 4] |                             功能                             |
+| :---------------: | :---------------: | :------------------: | :------: | :------: | :----------------------------------------------------------: |
+|     错误输出      |                   |                      |          |          | 如果输入的指令名不属于该环境，输出`Command not exist`；若参数数量不正确，输出`Params' count illegal`；对于所有未提及的其他输入不合法的情况，输出`Input illegal` |
+|   getOrderList    |                   |                      |          |          |            获取当前所服务的 Order 清单，详情见下             |
+|    manageOrder    |                   |                      |          |          |                      分配订单，详情见下                      |
+| DeliverAndReceive |                   |                      |          |          |                    送餐并且收钱，详情见下                    |
+|        rw         |   CID（顾客ID）   | money （充入的金额） |          |          | 具体逻辑参见 oms4，注意：当这次充钱达到 VIP 标准后，总金额应该按照八折重新计算 |
+
+
 
 `getOrderList`
 
 > 当前服务员所服务的 Order 清单
 
-| 指令名 | 成功输出 |
-| :---: | :---: |
+|    指令名    |                             输出                             |
+| :----------: | :----------------------------------------------------------: |
+|   错误输出   | 如果输入的指令名不属于该环境，输出`Command not exist`；若参数数量不正确，输出`Params' count illegal`；对于所有未提及的其他输入不合法的情况，输出`Input illegal`。 |
 | getOrderList | 若当前服务员所服务的顾客清单为空，则输出 `The list of customers served is empty` |
 | getOrderList | 若当前服务员所服务的顾客清单不为空，按照接单的顺序进行输出（类似队列），具体输出格式见下 |
-| 错误输出 | 如果输入的指令名不属于该环境，输出`Command not exist`；若参数数量不正确，输出`Params' count illegal`；对于所有未提及的其他输入不合法的情况，输出`Input illegal`。 |
 
 ```
 # 点餐Order输出示例
@@ -243,9 +249,10 @@ order指令 -> return Order实例
 [-] checkOrder
 [+]
 Customer has confirmed
-No other waiters take orders
-1.DID:H000000,DISH:FanQieChaoDan,PRICE:5.0,NUM:1,SERVE:NO
-2.DID:H000001,DISH:ChaoTuDouSi,PRICE:16.0,NUM:2,SERVE:NO
+1.DID:H000000,DISH:FanQieChaoDan,PRICE:5.0,NUM:1,Deliver:NO
+2.DID:H000001,DISH:ChaoTuDouSi,PRICE:16.0,NUM:2,Deliver:NO
+|
+SUM:37.0
 
 # 顾客登出，对应的服务员登录
 
@@ -254,21 +261,26 @@ No other waiters take orders
 [+]
 1. OID:Cu00000_1,DISH:[1 FanQieChaoDan,2 ChaoTuDouSi]
 
+# 输出的DISH列表中的元素组成：点餐的份数 + 菜名
 ```
+
+
 
 `manageOrder`
 
 > 服务员接单后分配 Order，即将 Order 清单中第一个 Order 送入厨房
 
-每当服务员输入一次 manageOrder 指令，则将 Order 清单的第一个 Order 送个厨房，即一个命令只能送一个 Order。
+每当服务员输入一次 manageOrder 指令，则将 Order 清单的第一个 Order 送入厨房（ Order 清单类似于一个Order队列，即具有先接单先送入厨房的原则），即一个命令只能送一个 Order。
 
-| 指令名| 成功输出 |
-| :---: | :---: |
+|   指令名    |                           成功输出                           |
+| :---------: | :----------------------------------------------------------: |
 | manageOrder | 若当前服务员所服务的顾客清单不为空，则送入 Order 清单中的第一个 Order，具体输出格式见下 |
 
-| 指令名 | 错误输出 |
-| :---: | :---: |
-| 错误输出 | 如果输入的指令名不属于该环境，输出`Command not exist`；若参数数量不正确，输出`Params' count illegal`；对于所有未提及的其他输入不合法的情况，输出`Input illegal`。 |
+
+
+|   指令名    |                           错误输出                           |
+| :---------: | :----------------------------------------------------------: |
+|  错误输出   | 如果输入的指令名不属于该环境，输出`Command not exist`；若参数数量不正确，输出`Params' count illegal`；对于所有未提及的其他输入不合法的情况，输出`Input illegal`。 |
 | manageOrder | 若当前服务员所服务的顾客清单为空，则输出`Can not manage empty OrderList` |
 
 ```
@@ -276,9 +288,10 @@ No other waiters take orders
 [-] checkOrder
 [+]
 Customer has confirmedNo
-other waiters take orders
-1.DID:H000000,DISH:FanQieChaoDan,PRICE:5.0,NUM:1,SERVE:NO
-2.DID:H000001,DISH:ChaoTuDouSi,PRICE:16.0,NUM:1,SERVE:NO
+1.DID:H000000,DISH:FanQieChaoDan,PRICE:5.0,NUM:1,SERVE:NO,Deliver:NO
+2.DID:H000001,DISH:ChaoTuDouSi,PRICE:16.0,NUM:1,SERVE:NO,Deliver:NO
+|
+SUM:21.0
 
 # 顾客登出，对应的服务员登录
 
@@ -286,42 +299,76 @@ other waiters take orders
 [-] manageOrder
 [+] Deliver order success
 
+# 此时查看Order订单列表
+[-] getOrderList
+[+] The list of customers served is empty
 ```
+
+
 
 `DeliverAndReceive`
 
 > 厨房完成菜品制作后，由服务员送餐，并结账
 
-服务员送餐，若 Order 的状态为未送餐，则送餐成功，否则失败；每一次执行该命令，则送一个订单 Order，并结账
+服务员送餐，若 Order 的状态为未送餐，则送餐成功，否则失败；每一次执行该命令，则向顾客送出对应的订单 Order，并结账
 
-| 指令名 | [参数 1] | 成功输出 |
-| :---: | :---: | :---: |
-| DeliverAndReceive | OID 订单 ID | 若 Order 的状态为未送餐且余额充足，具体输出格式见下 |
+|      指令名       |  [参数 1]   |                        成功输出                         |
+| :---------------: | :---------: | :-----------------------------------------------------: |
+| DeliverAndReceive | OID 订单 ID | 若 Order 的状态为未送餐状态且余额充足，具体输出格式见下 |
 
-| 指令名 | [参数 1] | 失败输出 |
-| :---: | :---: | :---: |
-| 错误输出 | OID 订单 ID | 如果输入的指令名不属于该环境，输出`Command not exist`；若参数数量不正确，输出`Params' count illegal`；对于所有未提及的其他输入不合法的情况，输出`Input illegal`。 |
-| DeliverAndReceive | OID 订单ID | 若订单的状态为已送餐，输出`Have Served order` |
-| DeliverAndReceive | OID 订单ID | 计算总价格（普通用户全价，VIP 顾客打八折）。若余额不足，则输出`Insufficient balance` |
+
+
+|      指令名       |  [参数 1]   |                           失败输出                           |
+| :---------------: | :---------: | :----------------------------------------------------------: |
+|     错误输出      | OID 订单 ID | 如果输入的指令名不属于该环境，输出`Command not exist`；若参数数量不正确，输出`Params' count illegal`；对于所有未提及的其他输入不合法的情况，输出`Input illegal`。 |
+| DeliverAndReceive | OID 订单ID  |       若订单的状态为已送餐，输出`Have Delivered order`       |
+| DeliverAndReceive | OID 订单ID  | 计算总价格（普通用户全价，VIP 顾客打八折）。若余额不足，则输出`Insufficient balance` |
 
 ```
 # 点餐Order输出示例
 [-] checkOrder
 [+]
 Customer has confirmed
-No other waiters take orders
-1.DID:H000000,DISH:FanQieChaoDan,PRICE:5.0,NUM:1,SERVE:YES
-2.DID:H000001,DISH:ChaoTuDouSi,PRICE:16.0,NUM:1,SERVE:YES
+1.DID:H000000,DISH:FanQieChaoDan,PRICE:5.0,NUM:1,Deliver:YES
+2.DID:H000001,DISH:ChaoTuDouSi,PRICE:16.0,NUM:2,,Deliver:YES
+|
+SUM:37.0
 
 # 顾客登出，服务员登录，receiveMoney输出示例
-[-] DeliverAndReceive
-[+] OID:Cu00000_1,Total:21.0,Balance:70.0
+[-] DeliverAndReceive Cu00000_1
+[+] OID:Cu00000_1,DISH:[FanQieChaoDan 5.0,ChaoTuDouSi 32.0],TOTAL:37.0,BALANCE:50.0
+
+# 其中输出DISH中元素组成为：菜名 + 该菜名对应的总价格（菜的单价 * 菜的份数）
+# BALANCE表示结账后的余额
 ```
+
+
 
 `rw`
 
 > 若用户结账时发现自己余额不足，需要让服务员帮助自己充钱
 
-| 指令名 | [参数 1] | [参数 2] | 成功输出 |
-| :---: | :---: | :---: | :---: |
-| rw | CID 顾客 ID | money 具体充入的钱 | 具体逻辑参见 oms4，注意：当这次充钱达到 VIP 标准后，总金额应该按照八折重新计算 |
+| 指令名 |  [参数 1]   |      [参数 2]      |                           成功输出                           |
+| :----: | :---------: | :----------------: | :----------------------------------------------------------: |
+|   rw   | CID 顾客 ID | money 具体充入的钱 | 具体逻辑参见 oms4，注意：当这次充钱达到 VIP 标准后，总金额应该按照八折重新计算 |
+
+```
+# 点餐Order输出示例
+[-] checkOrder
+[+]
+Customer has confirmed
+1.DID:H000000,DISH:FanQieChaoDan,PRICE:5.0,NUM:1,Deliver:YES
+2.DID:H000001,DISH:ChaoTuDouSi,PRICE:16.0,NUM:2,Deliver:YES
+|
+SUM:37.0
+
+# 顾客登出，服务员登录，receiveMoney输出示例
+[-] DeliverAndReceive Cu00000_1
+[+] Insufficient balance
+
+# 余额不足(假设只有20.0元)，服务员帮助充钱
+[-] rw Cu00000 100.0
+[-] DeliverAndReceive Cu00000_1
+[+] OID:Cu00000_1,DISH:[FanQieChaoDan 5.0,ChaoTuDouSi 32.0],TOTAL:37.0,BALANCE:83.0
+```
+

@@ -22,23 +22,23 @@
 
 ### 单例模式改写
 
-本次实验需要大家把前几次实现功能时引入的 List 类（存储对象）修改为单例模式。
+本次实验需要大家把前几次实现功能时引入的 List 类（存储对象）选择性地修改为单例模式，如果你觉得这个存储类十分契合单例模式的情形，那就可以按照下面的方式进行修改。
 
 > Java Singleton 模式主要作用是保证在 Java 应用程序中，一个类 Class 只有一个实例存在。 使用 Singleton 好处还在于可以节省内存，因为它限制了实例的个数，有利于 Java 垃圾回收（garbage collection）
 >
 > [实现单例模式的常见方法](http://www.blogjava.net/kenzhh/archive/2013/03/15/357824.html)
 
 ```java
-// 以DishList类为例
-class DishList {
-  private static DishList instance;
+// 以Menu类为例
+class Menu {
+  private static Menu instance;
 
-  private DishList() {
+  private Menu() {
   }
 
   // 由于oms不需要考虑线程安全问题，因此可以使用不保证线程安全的懒汉式写法
-  public static DishList getInstance() {
-	if (instance == null) instance = new DishList();
+  public static Menu getInstance() {
+	if (instance == null) instance = new Menu();
 	return instance;
   }
 }

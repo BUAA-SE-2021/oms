@@ -95,7 +95,7 @@ Order 的基本属性如下：
 |  指令名  | [参数 1/子指令名] |                 [参数 2]                 |         [参数 3]          | [参数 4] |                             功能                             |
 | :------: | :---------------: | :--------------------------------------: | :-----------------------: | :------: | :---------------------------------------------------------- |
 | 错误输出 |                   |                                          |                           |          | 如果输入的指令名不属于该环境，输出`Command not exist`；若参数数量不正确，输出`Params' count illegal`；对于所有未提及的其他输入不合法的情况，输出`Input illegal`。 |
-|   add    |        -i         |              Dish 主键 DID               | m（正整数且保证数据合法） |          | 点餐，将选择的菜品（m 道）加入到对应的 Order 实例中，如果不存在这道菜，输出`Dish selected is not exist`；如果菜品售空，输出`Dish selected is sold out`；如果点餐数量超过菜品数量，输出`Dish is out of stock`，本次点餐无效 |
+|   add    |        -i         |              Dish 主键 DID（保证合法）               | m（正整数且保证数据合法） |          | 点餐，将选择的菜品（m 道）加入到对应的 Order 实例中，如果不存在这道菜，输出`Dish selected is not exist`；如果菜品售空，输出`Dish selected is sold out`；如果点餐数量超过菜品数量，输出`Dish is out of stock`，本次点餐无效 |
 |   add    |        -n         | Dish 名称 name（不考虑名称的重复和非法） | m（正整数且保证数据合法） |          | 点餐，将选择的菜品（m 道）加入到对应的 Order 实例中，如果不存在这道菜，输出`Dish selected is not exist`；如果菜品售空，输出`Dish selected is sold out`；如果点餐数量超过菜品数量，输出`Dish is out of stock`，本次点餐无效 |
 |  finish  |                   |                                          |                           |          | 结束选菜，**检查此时 Order 的菜品数量**，如果菜品数量为 0，输出`Please select at least one dish to your order`，继续接收指令；否则退出到上一层环境中 |
 

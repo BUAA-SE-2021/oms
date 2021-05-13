@@ -195,7 +195,7 @@ SUM:158.0
 
 | 指令名  | 情况                                                         |
 | :-----: | :----------------------------------------------------------- |
-| confirm | 如果当前菜单有效（该Customer有未confirm的菜单），输出`Order Confirmed`，并退出顾客的 login 环境；如果不存在有效菜单，输出`No order can be confirmed`，不退出顾客的 login 环境 |
+| confirm | 如果当前菜单有效（该Customer有未confirm的菜单），输出`Order Confirmed`；如果不存在有效菜单，输出`No order can be confirmed` |
 
 **方式**：当顾客confirm时，系统为当前订单（Order）自动分配一名服务员。分配算法为：系统检索所有的 Waiter 对象，按照该对象当前负责的 Order 数量（由小到大）以及 WID（由小到大）进行排序并选择第一个 Waiter 来服务当前订单，并将其WID填入订单属性中。
 

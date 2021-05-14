@@ -146,11 +146,11 @@ Order 的基本属性如下：
 [+] Please select at least one dish to your order
 [-] add -i H000000 1 => 成功点菜后，菜品的余量就发生了变化，这也是数据一致性的体现
 [-] add -i H000009 2
-[+] Dish selected is not exist
+[+] Dish selected not exist
 [-] add -n FanQieChaoDan 2
 [+] Dish is out of stock
 [-] add -n FQCD 1
-[+] Dish selected is not exist
+[+] Dish selected not exist
 [-] add -n FanQieChaoDan 1
 [-] add -i H000000 1
 [+] Dish selected is sold out
@@ -381,4 +381,3 @@ SUM:37.0
 [-] cook
 # 此时厨房已经没有任务，无输出
 ```
-
